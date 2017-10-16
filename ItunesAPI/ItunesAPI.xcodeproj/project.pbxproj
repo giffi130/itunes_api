@@ -12,6 +12,7 @@
 		11CEBD2C1F938A9C00BCD247 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CEBD2A1F938A9C00BCD247 /* Main.storyboard */; };
 		11CEBD2E1F938A9C00BCD247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CEBD2D1F938A9C00BCD247 /* Assets.xcassets */; };
 		11CEBD311F938A9C00BCD247 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CEBD2F1F938A9C00BCD247 /* LaunchScreen.storyboard */; };
+		11CEBD3A1F938AFF00BCD247 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CEBD391F938AFF00BCD247 /* ConnectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		11CEBD2D1F938A9C00BCD247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11CEBD301F938A9C00BCD247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11CEBD321F938A9C00BCD247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11CEBD391F938AFF00BCD247 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		11CEBD251F938A9C00BCD247 /* ItunesAPI */ = {
 			isa = PBXGroup;
 			children = (
+				11CEBD381F938AE100BCD247 /* Module */,
 				11CEBD261F938A9C00BCD247 /* AppDelegate.swift */,
 				11CEBD281F938A9C00BCD247 /* ViewController.swift */,
 				11CEBD2A1F938A9C00BCD247 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				11CEBD321F938A9C00BCD247 /* Info.plist */,
 			);
 			path = ItunesAPI;
+			sourceTree = "<group>";
+		};
+		11CEBD381F938AE100BCD247 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				11CEBD391F938AFF00BCD247 /* ConnectionManager.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CEBD291F938A9C00BCD247 /* ViewController.swift in Sources */,
+				11CEBD3A1F938AFF00BCD247 /* ConnectionManager.swift in Sources */,
 				11CEBD271F938A9C00BCD247 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
