@@ -47,13 +47,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O6F-eB-HFr">
-                                                    <rect key="frame" x="10" y="0.0" width="100" height="100"/>
+                                                    <rect key="frame" x="10" y="25" width="49.5" height="49.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="O6F-eB-HFr" secondAttribute="height" multiplier="1:1" id="EQC-TS-NAx"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcg-i9-pqW">
-                                                    <rect key="frame" x="118" y="8" width="249" height="21"/>
+                                                    <rect key="frame" x="67.5" y="8" width="299.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -62,14 +62,15 @@
                                             <constraints>
                                                 <constraint firstItem="Lcg-i9-pqW" firstAttribute="top" secondItem="BDo-y8-ioB" secondAttribute="top" constant="8" id="70d-Hs-i3I"/>
                                                 <constraint firstAttribute="trailing" secondItem="Lcg-i9-pqW" secondAttribute="trailing" constant="8" id="FxR-YO-f2P"/>
-                                                <constraint firstItem="O6F-eB-HFr" firstAttribute="top" secondItem="BDo-y8-ioB" secondAttribute="top" id="LXG-so-tb0"/>
+                                                <constraint firstItem="O6F-eB-HFr" firstAttribute="top" secondItem="BDo-y8-ioB" secondAttribute="top" constant="25" id="LXG-so-tb0"/>
                                                 <constraint firstItem="O6F-eB-HFr" firstAttribute="leading" secondItem="BDo-y8-ioB" secondAttribute="leading" constant="10" id="Upg-as-MEv"/>
-                                                <constraint firstAttribute="bottom" secondItem="O6F-eB-HFr" secondAttribute="bottom" id="awm-Hi-wrk"/>
+                                                <constraint firstAttribute="bottom" secondItem="O6F-eB-HFr" secondAttribute="bottom" constant="25" id="awm-Hi-wrk"/>
                                                 <constraint firstItem="O6F-eB-HFr" firstAttribute="centerY" secondItem="BDo-y8-ioB" secondAttribute="centerY" id="hfG-xS-Ry4"/>
                                                 <constraint firstItem="Lcg-i9-pqW" firstAttribute="leading" secondItem="O6F-eB-HFr" secondAttribute="trailing" constant="8" id="wPf-1B-Oi6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="iconImageView" destination="O6F-eB-HFr" id="1Pa-xx-lPj"/>
                                             <outlet property="nameLabel" destination="Lcg-i9-pqW" id="IbU-Lx-fT4"/>
                                         </connections>
                                     </tableViewCell>
@@ -92,7 +93,7 @@
                     <navigationItem key="navigationItem" title="무료 금융 앱 목록" id="MqL-1Y-unL"/>
                     <connections>
                         <outlet property="tableView" destination="kbc-9h-P8q" id="jgD-wz-eDd"/>
-                        <segue destination="oJo-ih-lSH" kind="show" identifier="Detail" id="2Or-17-7mq"/>
+                        <segue destination="oJo-ih-lSH" kind="show" identifier="toDetail" id="2Or-17-7mq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
