@@ -8,57 +8,73 @@
 
 import UIKit
 
-class App {
-  var name: String
-  
-  init(name: String) {
-    self.name = name
-  }
-}
-
 class AppListViewController: UIViewController {
   
   var apps = [App]()
+  let detailIdentifier = "toDetail"
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     ConnectionManager.sharedInstance.getTopFreeList(limit: 50, genre: .Finance, completionHanlder: {
-      success, result in
+      succeed, result in
       
-      guard let feed = result?["feed"] as? NSDictionary,
-        let entry = feed["entry"] as? [NSDictionary] else {
+      guard succeed, let feedDict = result?["feed"] as? JSONDictionary,
+        let titleDict = feedDict["title"] as? JSONDictionary,
+        let label = titleDict["label"] as? String,
+        let entry = feedDict["entry"] as? [JSONDictionary] else {
+        // TODO
         preconditionFailure()
       }
       
+      DispatchQueue.main.async {
+        self.title = label
+      }
+      
       for item in entry {
-        guard let dictItem = item as? NSDictionary,
-          let imName = dictItem["im:name"] as? NSDictionary,
-          let label = imName["label"] as? String else{
-          preconditionFailure()
+        guard let _id = item["id"] as? JSONDictionary,
+          let attributes = _id["attributes"] as? JSONDictionary,
+          let nameDict = item["im:name"] as? JSONDictionary,
+          let appLabel = nameDict["label"] as? String,
+          let appID = attributes["im:id"] as? String,
+          let imageDict = item["im:image"] as? [JSONDictionary],
+          let imageURL = imageDict[0]["label"] as? String else {
+            
+            print("continue \(item)")
+            preconditionFailure()
+            
+          continue
         }
         
-        self.apps.append(App(name: label))
+        let app = App(name: appLabel, appID: appID, imageURL: imageURL)
+        self.apps.append(app)
       }
       
       DispatchQueue.main.async {
         self.tableView.reloadData()
       }
+  })
+}
+
+override func didReceiveMemoryWarning() {
+  super.didReceiveMemoryWarning()
+  // Dispose of any resources that can be recreated.
+}
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  if segue.identifier == detailIdentifier {
+    let destVC = segue.destination as! AppDetailViewController
     
-    })
+    //      destVC.appID =
   }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
+}
 }
 
 extension AppListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // TODO: Show App Detail
     
+    self.performSegue(withIdentifier: detailIdentifier, sender: self)
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
