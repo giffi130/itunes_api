@@ -19,7 +19,7 @@ class ConnectionManager: NSObject {
   
   private let BASE_URL = "https://itunes.apple.com/"
   private let TOP_FREE_LIST_URL = "kr/rss/topfreeapplications/limit=%d/genre=%d/json"
-  private let APP_DETAIL_URL = "lookup?id=%d&country=kr"
+  private let APP_DETAIL_URL = "lookup?id=%@&country=kr"
   
   typealias CompletionHandler = (_ succeed: Bool, _ result: JSONDictionary?) -> Void
   typealias ImageHandler = (_ data: Data?) -> Void
@@ -30,7 +30,7 @@ class ConnectionManager: NSObject {
     request(requestURL: topListURL, completionHandler: completionHanlder)
   }
   
-  func getAppDetail(appID: Int, completionHandler: @escaping CompletionHandler) {
+  func getAppDetail(appID: String, completionHandler: @escaping CompletionHandler) {
     let detailURL = String.init(format: APP_DETAIL_URL, appID)
     
     request(requestURL: detailURL, completionHandler: completionHandler)
