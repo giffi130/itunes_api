@@ -10,13 +10,36 @@ import UIKit
 
 class AppDetailViewController: UIViewController {
   
-  var appID: Int!
+  var appID: String!
+  var appDetail: AppDetail?
+  
+  let identifiers = ["HeaderCell", "ScreenshotCell"]
+  let cellHeights: [CGFloat] = [120, 720]
+  
+  @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     ConnectionManager.sharedInstance.getAppDetail(appID: appID) { (succeed, result) in
-      print(result)
+      guard let results = result?["results"] as? [JSONDictionary], results.count == 1
+        else {
+        preconditionFailure()
+      }
+      
+      let resultDict = results[0]
+      guard let imgURL = resultDict["artworkUrl100"] as? String,
+        let appName = resultDict["trackName"] as? String,
+        let rating = resultDict["averageUserRating"] as? Double,
+        let scURLs = resultDict["screenshotUrls"] as? [String] else {
+          preconditionFailure()
+      }
+      
+      self.appDetail = AppDetail(name: appName, imageURL: imgURL, rating: rating, screenshotURLs: scURLs)
+      
+      DispatchQueue.main.async {
+        self.tableView.reloadData()
+      }
     }
   }
   
@@ -24,16 +47,26 @@ class AppDetailViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+}
+
+extension AppDetailViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 2
+  }
   
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let identifier = identifiers[indexPath.row]
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as! BaseAppDetailTableViewCell
+    
+    if let appDetail = self.appDetail {
+      cell.configureCell(detail: appDetail)
+    }
+    
+    return cell
+  }
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return cellHeights[indexPath.row]
+  }
 }
