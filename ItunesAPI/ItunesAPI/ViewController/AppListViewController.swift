@@ -12,6 +12,7 @@ class AppListViewController: UIViewController {
   
   var apps = [App]()
   let detailIdentifier = "toDetail"
+  
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
@@ -24,8 +25,8 @@ class AppListViewController: UIViewController {
         let titleDict = feedDict["title"] as? JSONDictionary,
         let label = titleDict["label"] as? String,
         let entry = feedDict["entry"] as? [JSONDictionary] else {
-        // TODO
-        preconditionFailure()
+          // TODO
+          preconditionFailure()
       }
       
       DispatchQueue.main.async {
@@ -44,7 +45,7 @@ class AppListViewController: UIViewController {
             print("continue \(item)")
             preconditionFailure()
             
-          continue
+            continue
         }
         
         let app = App(name: appLabel, appID: appID, imageURL: imageURL)
@@ -54,26 +55,29 @@ class AppListViewController: UIViewController {
       DispatchQueue.main.async {
         self.tableView.reloadData()
       }
-  })
-}
-
-override func didReceiveMemoryWarning() {
-  super.didReceiveMemoryWarning()
-  // Dispose of any resources that can be recreated.
-}
-
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  if segue.identifier == detailIdentifier {
-    let destVC = segue.destination as! AppDetailViewController
-    
-    //      destVC.appID =
+    })
   }
-}
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == detailIdentifier {
+      let backItem = UIBarButtonItem()
+      backItem.title = "뒤로"
+      navigationItem.backBarButtonItem = backItem
+      
+      let destVC = segue.destination as! AppDetailViewController
+      let selectedRow = tableView.indexPathForSelectedRow?.row
+      destVC.appID = apps[selectedRow!].appID
+    }
+  }
 }
 
 extension AppListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
     self.performSegue(withIdentifier: detailIdentifier, sender: self)
     tableView.deselectRow(at: indexPath, animated: true)
   }
