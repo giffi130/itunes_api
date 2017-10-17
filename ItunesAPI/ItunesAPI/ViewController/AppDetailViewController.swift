@@ -13,8 +13,8 @@ class AppDetailViewController: UIViewController {
   var appID: String!
   var appDetail: AppDetail?
   
-  let identifiers = ["HeaderCell", "ScreenshotCell"]
-  let cellHeights: [CGFloat] = [120, 720]
+  let identifiers = ["HeaderCell", "ScreenshotCell", "DescriptionCell"]
+  let cellHeights: [CGFloat] = [120, 440]
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -31,11 +31,12 @@ class AppDetailViewController: UIViewController {
       guard let imgURL = resultDict["artworkUrl100"] as? String,
         let appName = resultDict["trackName"] as? String,
         let rating = resultDict["averageUserRating"] as? Double,
-        let scURLs = resultDict["screenshotUrls"] as? [String] else {
+        let scURLs = resultDict["screenshotUrls"] as? [String],
+        let description = resultDict["description"] as? String else {
           preconditionFailure()
       }
       
-      self.appDetail = AppDetail(name: appName, imageURL: imgURL, rating: rating, screenshotURLs: scURLs)
+      self.appDetail = AppDetail(name: appName, imageURL: imgURL, rating: rating, screenshotURLs: scURLs, description: description)
       
       DispatchQueue.main.async {
         self.tableView.reloadData()
@@ -51,7 +52,7 @@ class AppDetailViewController: UIViewController {
 
 extension AppDetailViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return identifiers.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,6 +68,11 @@ extension AppDetailViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return cellHeights[indexPath.row]
+    if indexPath.row != 2 {
+      return cellHeights[indexPath.row]
+    } else {
+      return tableView.estimatedRowHeight
+    }
+    
   }
 }

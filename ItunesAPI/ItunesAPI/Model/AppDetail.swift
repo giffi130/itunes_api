@@ -13,11 +13,13 @@ class AppDetail {
   var imageURL: String
   var rating: Double
   var screenshotURLs: [String]
+  var description: String
   
-  init(name: String, imageURL: String, rating: Double, screenshotURLs: [String]) {
+  init(name: String, imageURL: String, rating: Double, screenshotURLs: [String], description: String) {
     self.name = name
     self.imageURL = imageURL
     self.rating = rating
     self.screenshotURLs = screenshotURLs
+    self.description = description
   }
 }

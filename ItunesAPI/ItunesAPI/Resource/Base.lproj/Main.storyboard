@@ -230,11 +230,11 @@
                                             <outlet property="titleLabel" destination="AzF-cA-TPC" id="IED-Uz-t3v"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScreenshotCell" rowHeight="696" id="ytX-o7-fyP" customClass="AppDetailScreenshotTableViewCell" customModule="ItunesAPI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="696"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScreenshotCell" rowHeight="100" id="ytX-o7-fyP" customClass="AppDetailScreenshotTableViewCell" customModule="ItunesAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ytX-o7-fyP" id="kL5-UN-ta7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="695.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미리보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0b-JD-nfZ">
@@ -244,13 +244,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1un-RJ-KH4">
-                                                    <rect key="frame" x="0.0" y="45.5" width="375" height="650"/>
+                                                    <rect key="frame" x="0.0" y="45.5" width="375" height="44"/>
                                                 </scrollView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1un-RJ-KH4" firstAttribute="leading" secondItem="kL5-UN-ta7" secondAttribute="leading" id="E6b-fA-5Vv"/>
                                                 <constraint firstItem="g0b-JD-nfZ" firstAttribute="leading" secondItem="kL5-UN-ta7" secondAttribute="leading" constant="10" id="Gwc-XI-n8H"/>
-                                                <constraint firstAttribute="bottom" secondItem="1un-RJ-KH4" secondAttribute="bottom" id="boj-hZ-rYR"/>
+                                                <constraint firstAttribute="bottom" secondItem="1un-RJ-KH4" secondAttribute="bottom" constant="10" id="boj-hZ-rYR"/>
                                                 <constraint firstItem="1un-RJ-KH4" firstAttribute="top" secondItem="g0b-JD-nfZ" secondAttribute="bottom" constant="10" id="hxP-j2-yUq"/>
                                                 <constraint firstItem="g0b-JD-nfZ" firstAttribute="top" secondItem="kL5-UN-ta7" secondAttribute="top" constant="10" id="pnA-v8-e68"/>
                                                 <constraint firstAttribute="trailing" secondItem="1un-RJ-KH4" secondAttribute="trailing" id="tAe-wn-dLl"/>
@@ -258,6 +258,39 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="scrollView" destination="1un-RJ-KH4" id="2nK-eq-lFu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DescriptionCell" rowHeight="100" id="Hey-S1-hdl" customClass="AppDetailDescriptionTableViewCell" customModule="ItunesAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="248" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hey-S1-hdl" id="7P9-zd-rdy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vm-Rq-lq6">
+                                                    <rect key="frame" x="10" y="10" width="36.5" height="26"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h23-Wd-PkP">
+                                                    <rect key="frame" x="10" y="39" width="355" height="60.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="h23-Wd-PkP" secondAttribute="trailing" constant="10" id="Ex7-O7-sqt"/>
+                                                <constraint firstItem="h23-Wd-PkP" firstAttribute="top" secondItem="4Vm-Rq-lq6" secondAttribute="bottom" constant="3" id="Nsl-29-N0i"/>
+                                                <constraint firstAttribute="bottom" secondItem="h23-Wd-PkP" secondAttribute="bottom" id="Ti2-zg-Dzk"/>
+                                                <constraint firstItem="4Vm-Rq-lq6" firstAttribute="leading" secondItem="7P9-zd-rdy" secondAttribute="leading" constant="10" id="bSe-li-g3K"/>
+                                                <constraint firstItem="4Vm-Rq-lq6" firstAttribute="top" secondItem="7P9-zd-rdy" secondAttribute="top" constant="10" id="enw-mb-za1"/>
+                                                <constraint firstItem="h23-Wd-PkP" firstAttribute="leading" secondItem="7P9-zd-rdy" secondAttribute="leading" constant="10" id="gHd-pj-e5v"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="h23-Wd-PkP" id="TEc-Iz-whp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
