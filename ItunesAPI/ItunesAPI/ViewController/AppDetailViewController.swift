@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppDetailViewController: UIViewController {
+class AppDetailViewController: BaseViewController {
   
   var appID: String!
   var appDetail: AppDetail?
@@ -22,9 +22,10 @@ class AppDetailViewController: UIViewController {
     super.viewDidLoad()
     
     ConnectionManager.sharedInstance.getAppDetail(appID: appID) { (succeed, result) in
-      guard let results = result?["results"] as? [JSONDictionary], results.count == 1
+      guard succeed, let results = result?["results"] as? [JSONDictionary], results.count == 1
         else {
-        preconditionFailure()
+        self.showConfirmAlert(messageRes: "invalid_data")
+          return
       }
       
       let resultDict = results[0]

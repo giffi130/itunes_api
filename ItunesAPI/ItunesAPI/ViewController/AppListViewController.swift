@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppListViewController: UIViewController {
+class AppListViewController: BaseViewController {
   
   var apps = [App]()
   let detailIdentifier = "toDetail"
@@ -25,8 +25,8 @@ class AppListViewController: UIViewController {
         let titleDict = feedDict["title"] as? JSONDictionary,
         let label = titleDict["label"] as? String,
         let entry = feedDict["entry"] as? [JSONDictionary] else {
-          // TODO
-          preconditionFailure()
+          self.showConfirmAlert(messageRes: "invalid_data")
+          return
       }
       
       DispatchQueue.main.async {
