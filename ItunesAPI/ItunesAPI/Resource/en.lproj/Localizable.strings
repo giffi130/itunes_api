@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  ItunesAPI
+
+  Created by Hyeonjin Jang on 2017. 10. 18..
+  Copyright © 2017년 KakaoBank. All rights reserved.
+*/
+
+"error" = "오류";
+"navigation_back" = "뒤로";
+"invalid_data" = "데이터 형식이 올바르지 않습니다.";
+"confirm" = "확인";
