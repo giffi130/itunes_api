@@ -21,8 +21,21 @@ class BaseViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  func showConfirmAlert(messageRes: String) {
-    let alert = UIAlertController(title: String.l("error"), message: String.l(messageRes), preferredStyle: .alert)
+  func showErrorAlert(error: Errors) {
+    var errorMessage = "unknown_error"
+    
+    switch error {
+    case .InvalidData:
+      errorMessage = "invalid_data_error"
+    case .InvalidURL:
+      errorMessage = "invalid_url_error"
+    case .JSONParse:
+      errorMessage = "json_Parse_error"
+    case .Network:
+      errorMessage = "network_error"
+    }
+    
+    let alert = UIAlertController(title: String.l("error"), message: String.l(errorMessage), preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: String.l("confirm"), style: UIAlertActionStyle.default, handler: nil))
     self.present(alert, animated: true, completion: nil)
   }

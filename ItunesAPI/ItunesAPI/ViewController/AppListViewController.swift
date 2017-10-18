@@ -19,13 +19,18 @@ class AppListViewController: BaseViewController {
     super.viewDidLoad()
     
     ConnectionManager.sharedInstance.getTopFreeList(limit: 50, genre: .Finance, completionHanlder: {
-      succeed, result in
+      succeed, result, error in
+      
+      if let error = error {
+        super.showErrorAlert(error: error)
+        return
+      }
       
       guard succeed, let feedDict = result?["feed"] as? JSONDictionary,
         let titleDict = feedDict["title"] as? JSONDictionary,
         let label = titleDict["label"] as? String,
         let entry = feedDict["entry"] as? [JSONDictionary] else {
-          self.showConfirmAlert(messageRes: "invalid_data")
+          self.showErrorAlert(error: .InvalidData)
           return
       }
       

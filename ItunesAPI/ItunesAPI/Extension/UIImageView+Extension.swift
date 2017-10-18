@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
   func setImage(withURL url: String) {
     
-    ConnectionManager.sharedInstance.imageRequest(requestURL: url) { (data) in
+    ConnectionManager.sharedInstance.imageRequest(requestURL: url) { (data, errors) in
       guard let _data = data else {
         return
       }

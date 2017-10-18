@@ -21,10 +21,14 @@ class AppDetailViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    ConnectionManager.sharedInstance.getAppDetail(appID: appID) { (succeed, result) in
+    ConnectionManager.sharedInstance.getAppDetail(appID: appID) { (succeed, result, error) in
+      if let error = error {
+        super.showErrorAlert(error: error)
+        return
+      }
       guard succeed, let results = result?["results"] as? [JSONDictionary], results.count == 1
         else {
-        self.showConfirmAlert(messageRes: "invalid_data")
+          self.showErrorAlert(error: .InvalidData)
           return
       }
       
@@ -34,7 +38,7 @@ class AppDetailViewController: BaseViewController {
         let rating = resultDict["averageUserRating"] as? Double,
         let scURLs = resultDict["screenshotUrls"] as? [String],
         let description = resultDict["description"] as? String else {
-          self.showConfirmAlert(messageRes: "invalid_data")
+          self.showErrorAlert(error: .InvalidData)
           return
       }
       
