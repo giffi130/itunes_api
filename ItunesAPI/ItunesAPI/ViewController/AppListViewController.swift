@@ -65,7 +65,8 @@ class AppListViewController: BaseViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == detailIdentifier {
       let backItem = UIBarButtonItem()
-      backItem.title = "뒤로"
+      backItem.title = String.l("navigation_back")
+      backItem.tintColor = UIColor.black
       navigationItem.backBarButtonItem = backItem
       
       let destVC = segue.destination as! AppDetailViewController
@@ -87,10 +88,7 @@ extension AppListViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: AppListTableViewCell.CELL_IDENTIFIER) as? AppListTableViewCell else {
-      // TODO
-      preconditionFailure()
-    }
+    let cell = tableView.dequeueReusableCell(withIdentifier: AppListTableViewCell.CELL_IDENTIFIER) as! AppListTableViewCell
     
     cell.configureCell(app: apps[indexPath.row])
     
