@@ -13,10 +13,12 @@ class App {
   var name: String
   var appID: String
   var imageURL: String
+  var description: String
   
-  init(name: String, appID: String, imageURL: String) {
+  init(name: String, appID: String, imageURL: String, desc: String) {
     self.name = name
     self.appID = appID
     self.imageURL = imageURL
+    self.description = desc
   }
 }

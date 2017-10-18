@@ -10,11 +10,12 @@ import UIKit
 
 class AppListTableViewCell: UITableViewCell {
   
-  static let CELL_HEIGHT: CGFloat = 100
+  static let CELL_HEIGHT: CGFloat = 75
   static let CELL_IDENTIFIER = "Cell"
   
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var iconImageView: UIImageView!
+  @IBOutlet weak var descLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -30,5 +31,6 @@ class AppListTableViewCell: UITableViewCell {
   func configureCell(app: App){
     nameLabel.text = app.name
     iconImageView.setImage(withURL: app.imageURL)
+    descLabel.text = app.description
   }
 }

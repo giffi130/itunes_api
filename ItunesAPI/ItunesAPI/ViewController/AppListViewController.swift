@@ -40,15 +40,14 @@ class AppListViewController: BaseViewController {
           let appLabel = nameDict["label"] as? String,
           let appID = attributes["im:id"] as? String,
           let imageDict = item["im:image"] as? [JSONDictionary],
+          let summaryDict = item["summary"] as? JSONDictionary,
+          let description = summaryDict["label"] as? String,
           let imageURL = imageDict[0]["label"] as? String else {
-            
-            print("continue \(item)")
-            preconditionFailure()
             
             continue
         }
         
-        let app = App(name: appLabel, appID: appID, imageURL: imageURL)
+        let app = App(name: appLabel, appID: appID, imageURL: imageURL, desc: description)
         self.apps.append(app)
       }
       
