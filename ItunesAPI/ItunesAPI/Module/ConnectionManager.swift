@@ -68,12 +68,10 @@ extension ConnectionManager {
           do {
             response = try JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary
           } catch let jsonError as NSError {
-            // TODO : Error Handling
             completionHandler(false, nil)
             return
           }
           
-          // TODO : Call Handler
           completionHandler(true, response)
         }
       }
