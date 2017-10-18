@@ -34,7 +34,8 @@ class AppDetailViewController: BaseViewController {
         let rating = resultDict["averageUserRating"] as? Double,
         let scURLs = resultDict["screenshotUrls"] as? [String],
         let description = resultDict["description"] as? String else {
-          preconditionFailure()
+          self.showConfirmAlert(messageRes: "invalid_data")
+          return
       }
       
       self.appDetail = AppDetail(name: appName, imageURL: imgURL, rating: rating, screenshotURLs: scURLs, description: description)
